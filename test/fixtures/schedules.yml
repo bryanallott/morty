@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  period: 2008-09-10
+  loan: one
+  existing_capital: 12000
+  interest_earned: 1204.98
+  repayment: 1876.98
+  interest_paid: 1.5
+  capital_paid: 1.5
+
+two:
+  period: 2008-09-10
+  loan: one
+  existing_capital: 12000
+  interest_earned: 1204.98
+  repayment: 876.98
+  interest_paid: 1.5
+  capital_paid: 1.5

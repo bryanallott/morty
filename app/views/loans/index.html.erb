@@ -1,0 +1,26 @@
+<h1>Listing loans</h1>
+
+<table>
+  <tr>
+    <th>Start</th>
+    <th>Principal</th>
+    <th>Interest</th>
+    <th>Period</th>
+  </tr>
+
+<% for loan in @loans %>
+  <tr>
+    <td><%=h loan.start %></td>
+    <td><%=h loan.principal %></td>
+    <td><%=h loan.annual_interest %></td>
+    <td><%=h loan.compounding_periods %></td>
+    <td><%= link_to 'Show', loan %></td>
+    <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
+    <td><%= link_to 'Destroy', loan, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New loan', new_loan_path %>

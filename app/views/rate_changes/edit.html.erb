@@ -1,0 +1,20 @@
+<h1>Editing rate_change</h1>
+
+<% form_for(@rate_change) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :changed %><br />
+    <%= f.date_select :changed %>
+  </p>
+  <p>
+    <%= f.label :interest %><br />
+    <%= f.text_field :interest %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @rate_change %> |
+<%= link_to 'Back', rate_changes_path %>

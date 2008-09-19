@@ -1,0 +1,27 @@
+<h1>New loan</h1>
+
+<% form_for(@loan) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :start %><br />
+    <%= f.date_select :start %>
+  </p>
+  <p>
+    <%= f.label :principal %><br />
+    <%= f.text_field :principal %>
+  </p>
+  <p>
+    <%= f.label :annual_interest %><br />
+    <%= f.text_field :annual_interest %>
+  </p>
+  <p>
+    <%= f.label :compounding_periods %><br />
+    <%= f.text_field :compounding_periods %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', loans_path %>

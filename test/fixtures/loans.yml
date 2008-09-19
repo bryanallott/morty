@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+#first pass assumes interest = 15%p.a, with monthly repayments
+#
+one:
+  start: 2005-01-01
+  principal: 135000
+  annual_interest: 18
+  compounding_periods: 240
+
+two:
+  start: 2008-09-10
+  principal: 100000
+  annual_interest: 15
+  compounding_periods: 12

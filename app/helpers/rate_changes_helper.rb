@@ -1,0 +1,2 @@
+module RateChangesHelper
+end

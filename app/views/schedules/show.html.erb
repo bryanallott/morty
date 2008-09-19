@@ -1,0 +1,23 @@
+<p>
+  <b>Period:</b>
+  <%=h @schedule.period %>
+</p>
+
+<p>
+  <b>Repayment:</b>
+  <%=h @schedule.repayment %>
+</p>
+
+<p>
+  <b>Interest paid:</b>
+  <%=h @schedule.interest_paid %>
+</p>
+
+<p>
+  <b>Capital paid:</b>
+  <%=h @schedule.capital_paid %>
+</p>
+
+
+<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+<%= link_to 'Back', schedules_path %>

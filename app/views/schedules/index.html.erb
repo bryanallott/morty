@@ -1,0 +1,63 @@
+<h1>Listing schedule for Loan</h1>
+
+<div id="container" style="width:460px;height:400px"></div>
+<div id="container_2" style="width:460px;height:400px"></div>
+
+  <script type="text/javascript">
+  var f = Flotr.draw( $('container'),[
+            { 
+              data: [<%= plot_existing_capital(@loan) %>],
+              label: "existing capital"
+             },
+			{
+			  data: [<%= plot_capital_sum(@loan) %>],
+			  label: "capital sum"
+			}
+            ],{
+              yaxis: {min:0}
+            }
+            );
+  var f = Flotr.draw( $('container_2'),[
+			{
+			  data: [<%= plot_interest_paid(@loan) %>],
+			  label: "interest paid"
+			},
+			{
+			  data: [<%= plot_interest_remaining(@loan) %>],
+			  label: "interest remaining"
+			}
+            ],{
+              yaxis: {min:0}
+            }
+            );
+  </script>
+
+<table>
+  <tr>
+    <th>Period</th>
+    <th>Existing Capital</th>
+    <th>Repayment</th>
+    <th>Interest paid</th>
+    <th>Capital paid</th>
+	<th>Accumulated Capital</th>
+  </tr>
+
+<% 	capital_sum = 0
+	for schedule in @schedules 
+%>
+
+  <tr>
+    <td><%=h schedule.period %></td>
+    <td><%=h sprintf("%0.2f", schedule.existing_capital.display) %></td>
+    <td><%=h schedule.repayment.display %></td>
+    <td><%=h schedule.interest_paid.display %></td>
+    <td><%=h schedule.capital_paid.display %></td>
+	<% capital_sum += schedule.capital_paid %>
+	<td><%=h capital_sum.display %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New schedule', new_loan_schedule_path(@loan) %>

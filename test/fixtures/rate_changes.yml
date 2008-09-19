@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  changed: 2007-09-10
+  annual_interest: 12.5
+
+two:
+  changed: 2010-09-10
+  annual_interest: 16.5

@@ -1,0 +1,22 @@
+<h1>Listing rate_changes</h1>
+
+<table>
+  <tr>
+    <th>Changed</th>
+    <th>Interest</th>
+  </tr>
+
+<% for rate_change in @rate_changes %>
+  <tr>
+    <td><%=h rate_change.changed %></td>
+    <td><%=h rate_change.interest %></td>
+    <td><%= link_to 'Show', rate_change %></td>
+    <td><%= link_to 'Edit', edit_rate_change_path(rate_change) %></td>
+    <td><%= link_to 'Destroy', rate_change, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New rate_change', new_rate_change_path %>
