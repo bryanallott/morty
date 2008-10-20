@@ -6,6 +6,11 @@
     <th>Principal</th>
     <th>Interest</th>
     <th>Period</th>
+    <th>Repayment</th>
+	<th>Total Paid</th>
+	<th>Total Interest</th>
+	<th>Future Value</th>
+	<th colspan="3">Actions</th>
   </tr>
 
 <% for loan in @loans %>
@@ -14,6 +19,10 @@
     <td><%=h loan.principal %></td>
     <td><%=h loan.annual_interest %></td>
     <td><%=h loan.compounding_periods %></td>
+    <td><%=h loan.repayment %></td>
+    <td><%=h (loan.compounding_periods * loan.repayment) %></td>
+    <td><%=h (loan.compounding_periods * loan.repayment) - loan.principal %></td>
+	<td><%=h loan.future_value %></td>
     <td><%= link_to 'Show', loan %></td>
     <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
     <td><%= link_to 'Destroy', loan, :confirm => 'Are you sure?', :method => :delete %></td>

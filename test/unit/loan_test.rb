@@ -12,14 +12,17 @@ class LoanTest < ActiveSupport::TestCase
   end
   def test_total_payments
     loan = loans(:two)
+    loan.save!
     assert_equal 108309.97, loan.total_payments.precision(2)
   end
   def test_total_interest
     loan = loans(:two)
+    loan.save!
     assert_equal 8309.97, loan.total_interest.precision(2)
   end
   def test_repayment
     loan = loans(:one)
+    loan.save!
     assert_equal 2083.47, loan.repayment.precision(2)
   end
 end

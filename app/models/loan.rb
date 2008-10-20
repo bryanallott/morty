@@ -2,17 +2,27 @@ class Loan < ActiveRecord::Base
   has_many :schedules
   has_many :advances
   has_many :rate_changes
-  @monthly_repayment
 
   def repayment
     if(!@monthly_repayment)
-      @monthly_repayment = calculate_repayment(self.annual_interest, self.compounding_periods, self.principal)
+      @monthly_repayment = calculate_repayment
     end
     return @monthly_repayment
   end
+  
+  def future_value
+    if(!@future_value)
+      @future_value = calculate_future_value
+    end
+    return @future_value
+  end
 
   def total_payments
-    return (repayment * self.compounding_periods)
+    #this is an actual count
+    return self.schedules.inject(0) { |result, s| result + s.repayment }
+    #this only works if we don't adjust repayments
+    #which doesn't happen if the interest rate rises.
+    #return (repayment * self.compounding_periods)
   end
 
   def total_interest
@@ -25,17 +35,21 @@ class Loan < ActiveRecord::Base
   end
   
 private  
-  def calculate_repayment(annual_interest, compounding_periods, principal)
-    interest = annual_interest/100.0/12.0
-    a = (1+interest)**compounding_periods
-    return principal/((a-1)/(a*interest))
+  def calculate_future_value
+    interest = self.annual_interest/100.0/12.0
+    a = (1+interest)**self.compounding_periods
+    return self.repayment*((a-1)/interest)
+  end
+  
+  def calculate_repayment
+    interest = self.annual_interest/100.0/12.0
+    a = (1+interest)**self.compounding_periods
+    return self.principal/((a-1)/(a*interest))
   end
   def create_schedules
     repayment = self.repayment
     existing_capital = self.principal
     interest = self.annual_interest/100.0/12.0
-    #document the start of the loan agreement
-    #Schedule.new(:loan=>self, :period=>(self.start), :existing_capital=>existing_capital, :interest_earned=>0, :repayment=>repayment, :interest_paid=>0, :capital_paid=>0).save
           
     month = 0
     (1..self.compounding_periods).each { |p|

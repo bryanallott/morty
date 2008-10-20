@@ -5,6 +5,6 @@ class Numeric
     (self * mult).round / mult
   end
   def display
-    return sprintf("%0.2f",self)
+    (sprintf("%0.2f", self)).to_f
   end
 end
