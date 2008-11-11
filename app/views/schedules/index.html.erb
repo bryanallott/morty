@@ -7,11 +7,11 @@
   var f = Flotr.draw( $('container'),[
             { 
               data: [<%= plot_existing_capital(@loan) %>],
-              label: "existing capital"
+              label: "capital debt"
              },
 			{
 			  data: [<%= plot_capital_sum(@loan) %>],
-			  label: "capital sum"
+			  label: "equity"
 			}
             ],{
               yaxis: {min:0}
@@ -60,4 +60,3 @@
 
 <br />
 
-<%= link_to 'New schedule', new_loan_schedule_path(@loan) %>

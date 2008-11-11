@@ -1,6 +1,6 @@
 <h1>Editing advance</h1>
 
-<% form_for(@advance) do |f| %>
+<% form_for([@loan, @advance]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -16,5 +16,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @advance %> |
-<%= link_to 'Back', loan_advances_path(@loan) %>
+<%= link_to 'Show', loan_advance_path(@loan, @advance) %> |
+<%= link_to 'Back', loan_advance_path(@loan, nil) %>

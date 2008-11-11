@@ -39,7 +39,7 @@ class AdvancesController < ApplicationController
       if @advance.save
         @loan.save!
         flash[:notice] = 'Advance was successfully created.'
-        format.html { redirect_to(@advance) }
+        format.html { redirect_to([@loan, @advance]) }
         format.xml  { render :xml => @advance, :status => :created, :location => @advance }
       else
         format.html { render :action => "new" }
@@ -55,7 +55,7 @@ class AdvancesController < ApplicationController
       if @advance.update_attributes(params[:advance])
         @loan.save!
         flash[:notice] = 'Advance was successfully updated.'
-        format.html { redirect_to(@advance) }
+        format.html { redirect_to([@loan, @advance]) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -70,7 +70,7 @@ class AdvancesController < ApplicationController
     @loan.save!
     
     respond_to do |format|
-      format.html { redirect_to(advances_url) }
+      format.html { redirect_to(:action => 'index') }
       format.xml  { head :ok }
     end
   end

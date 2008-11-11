@@ -18,11 +18,7 @@ class Loan < ActiveRecord::Base
   end
 
   def total_payments
-    #this is an actual count
     return self.schedules.inject(0) { |result, s| result + s.repayment }
-    #this only works if we don't adjust repayments
-    #which doesn't happen if the interest rate rises.
-    #return (repayment * self.compounding_periods)
   end
 
   def total_interest
@@ -50,21 +46,25 @@ private
     repayment = self.repayment
     existing_capital = self.principal
     interest = self.annual_interest/100.0/12.0
-          
+    capital_paid = 0
+    start_date = Date.new(self.start.year, self.start.month, 1)
     month = 0
     (1..self.compounding_periods).each { |p|
-      advance = self.advances.find_by_when(self.start >> month)
-      if(advance)
-        existing_capital -= advance.amount 
-      end
+      from = Date.new(start_date.year, start_date.month, 1) >> month
+      to = Date.new(from.year, from.month, -1)
+      advances = self.advances.find(:all, :conditions => ["[when] between :from and :to", { :from => from, :to => to }])
+      advances.each { |a|
+        existing_capital -= a.amount 
+        capital_paid += a.amount
+      }
       interest_earned = existing_capital*(1 + interest) - existing_capital
       if(repayment>interest_earned)
         interest_paid = interest_earned
       else
         interest_paid = repayment
       end
-      capital_paid = repayment-interest_paid
-      Schedule.new(:loan=>self, :period=>(self.start>>p), :existing_capital=>existing_capital, :interest_earned=>interest_earned, :repayment=>repayment, :interest_paid=>interest_paid, :capital_paid=>capital_paid).save!
+      capital_paid = (repayment-interest_paid)
+      Schedule.new(:loan=>self, :period=>(to), :existing_capital=>existing_capital, :interest_earned=>interest_earned, :repayment=>repayment, :interest_paid=>interest_paid, :capital_paid=>capital_paid).save!
       existing_capital -= capital_paid
       if(existing_capital<=0)
         break

@@ -1,3 +1,4 @@
+<%= link_to 'Loan', @loan %>
 <h1>Listing advances</h1>
 
 <table>
@@ -10,9 +11,9 @@
   <tr>
     <td><%=h advance.when %></td>
     <td><%=h advance.amount %></td>
-    <td><%= link_to 'Show', advance %></td>
+    <td><%= link_to 'Show', loan_advance_path(@loan, advance) %></td>
     <td><%= link_to 'Edit', edit_loan_advance_path(@loan, advance) %></td>
-    <td><%= link_to 'Destroy', advance, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', loan_advance_path(@loan, advance), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
