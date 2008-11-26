@@ -35,11 +35,11 @@
 <table>
   <tr>
     <th>Period</th>
-    <th>Existing Capital</th>
+    <th>Remaining Capital</th>
     <th>Repayment</th>
     <th>Interest paid</th>
     <th>Capital paid</th>
-	<th>Accumulated Capital</th>
+    <th>Equity</th>
   </tr>
 
 <% 	capital_sum = 0
@@ -48,12 +48,12 @@
 
   <tr>
     <td><%=h schedule.period %></td>
-    <td><%=h sprintf("%0.2f", schedule.existing_capital.display) %></td>
-    <td><%=h schedule.repayment.display %></td>
-    <td><%=h schedule.interest_paid.display %></td>
-    <td><%=h schedule.capital_paid.display %></td>
-	<% capital_sum += schedule.capital_paid %>
-	<td><%=h capital_sum.display %></td>
+    <td align="right"><%=h sprintf("%0.2f", schedule.existing_capital) %></td>
+    <td align="right"><%=h sprintf("%0.2f", schedule.repayment) %></td>
+    <td align="right"><%=h sprintf("%0.2f", schedule.interest_paid) %></td>
+    <td align="right"><%=h sprintf("%0.2f", schedule.capital_paid) %></td>
+      <% capital_sum += schedule.capital_paid %>
+    <td align="right"><%=h sprintf("%0.2f", capital_sum) %></td>
   </tr>
 <% end %>
 </table>

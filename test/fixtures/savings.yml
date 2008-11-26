@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  advance_id: 1
+  periods: 1
+  saving: 1.5
+
+two:
+  advance_id: 1
+  periods: 1
+  saving: 1.5

@@ -1,0 +1,23 @@
+<h1>Listing the saving for Advance <%= "#{@advance.when} of #{@advance.amount}" %></h1>
+
+<table>
+  <tr>
+    <th>Periods</th>
+    <th>Savings</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% for savings in @savings %>
+  <tr>
+    <td><%= savings.periods %></td>
+    <td><%= sprintf("%0.2f", savings.saving) %></td>
+    <td><%= link_to 'Show', savings %></td>
+    <td><%= link_to 'Edit', edit_loan_advance_saving_path(@loan, @advance, savings) %></td>
+    <td><%= link_to 'Destroy', loan_advance_saving_path(@loan, @advance, savings), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

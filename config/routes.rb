@@ -1,8 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :savings
+
+  map.resources :s_avings
+
 
   map.resources :loans do |loan|
     loan.resources :schedules
-    loan.resources :advances
+    loan.resources :advances do |advance|
+      advance.resources :savings
+    end
     loan.resources :rate_changes
   end
 

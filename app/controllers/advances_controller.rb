@@ -3,7 +3,7 @@ class AdvancesController < ApplicationController
   before_filter(:get_loan)
 
   def index
-    @advances = Advance.find(:all)
+    @advances = @loan.advances
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @advances }
@@ -37,7 +37,17 @@ class AdvancesController < ApplicationController
     
     respond_to do |format|
       if @advance.save
+=begin        
+        saving = Saving.new(:advance_id => @advance)
+        periods = @loan.compounding_periods
+        interest = @loan.total_interest
+        
         @loan.save!
+        
+        saving.periods = (periods - @loan.compounding_periods)
+        saving.saving = (interest - @loan.total_interest)
+        saving.save!
+=end        
         flash[:notice] = 'Advance was successfully created.'
         format.html { redirect_to([@loan, @advance]) }
         format.xml  { render :xml => @advance, :status => :created, :location => @advance }

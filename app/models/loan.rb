@@ -42,6 +42,7 @@ private
     a = (1+interest)**self.compounding_periods
     return self.principal/((a-1)/(a*interest))
   end
+  
   def create_schedules
     repayment = self.repayment
     existing_capital = self.principal
@@ -49,14 +50,17 @@ private
     capital_paid = 0
     start_date = Date.new(self.start.year, self.start.month, 1)
     month = 0
+    
     (1..self.compounding_periods).each { |p|
       from = Date.new(start_date.year, start_date.month, 1) >> month
       to = Date.new(from.year, from.month, -1)
+      
       advances = self.advances.find(:all, :conditions => ["[when] between :from and :to", { :from => from, :to => to }])
       advances.each { |a|
         existing_capital -= a.amount 
         capital_paid += a.amount
       }
+      
       interest_earned = existing_capital*(1 + interest) - existing_capital
       if(repayment>interest_earned)
         interest_paid = interest_earned

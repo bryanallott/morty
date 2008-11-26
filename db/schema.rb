@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080910185829) do
+ActiveRecord::Schema.define(:version => 20081126130527) do
 
   create_table "advances", :force => true do |t|
     t.integer  "loan_id"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20080910185829) do
     t.integer  "loan_id"
     t.date     "changed"
     t.float    "annual_interest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "savings", :force => true do |t|
+    t.integer  "advance_id"
+    t.integer  "periods"
+    t.float    "saving"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
