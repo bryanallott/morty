@@ -17,11 +17,11 @@ pre {
   float: left;
   width:460px;
   height:400px;
-  max-height:500px;
 }
 
 #container_3 {
   overflow:auto;
+  width:600px !important;
 }
 
 a { color: #000; }
