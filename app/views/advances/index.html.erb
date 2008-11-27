@@ -1,19 +1,22 @@
-<%= link_to 'Loan', @loan %>
-<h1>Listing advances</h1>
+<%= link_to 'Go Back To Loan', @loan %>
+<h1>Your Advance Payments</h1>
 
 <table>
   <tr>
     <th>When</th>
     <th>Amount</th>
+    <th>Trimmed Periods</th>
+    <th>Money Saving</th>
+    <th>Action<th>
   </tr>
 
 <% for advance in @advances %>
   <tr>
     <td><%=h advance.when %></td>
-    <td><%=h advance.amount %></td>
-    <td><%= link_to 'Show', loan_advance_path(@loan, advance) %></td>
-    <td><%= link_to 'Edit', edit_loan_advance_path(@loan, advance) %></td>
-    <td><%= link_to 'Destroy', loan_advance_path(@loan, advance), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h sprintf("%0.2f", advance.amount) %></td>
+    <td><%=h advance.saving.periods %></td>
+    <td><%=h sprintf("%0.2f", advance.saving.saving) %></td>
+    <td><%= link_to 'Delete', loan_advance_path(@loan, @advance), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

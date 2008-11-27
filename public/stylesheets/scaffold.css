@@ -12,6 +12,8 @@ pre {
   font-size: 11px;
 }
 
+.tag {display:block; width:120px;float:left;}
+
 #container, #container_2, #container_3 {
   display: none;
   float: left;

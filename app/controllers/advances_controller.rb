@@ -49,7 +49,7 @@ class AdvancesController < ApplicationController
         saving.save!
 =end        
         flash[:notice] = 'Advance was successfully created.'
-        format.html { redirect_to([@loan, @advance]) }
+        format.html { redirect_to([@loan]) }
         format.xml  { render :xml => @advance, :status => :created, :location => @advance }
       else
         format.html { render :action => "new" }
@@ -76,11 +76,12 @@ class AdvancesController < ApplicationController
 
   def destroy
     @advance = Advance.find(params[:id])
-    @advance.destroy
+    @advance.saving.destroy!
+    @advance.destroy!
     @loan.save!
     
     respond_to do |format|
-      format.html { redirect_to(:action => 'index') }
+      format.html { redirect_to() }
       format.xml  { head :ok }
     end
   end

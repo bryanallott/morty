@@ -230,7 +230,7 @@ ul{
 /*------------------------------------------------body_area--------------------*/
 #body_area{
 	width:100%;
-	height:680px;
+
 	margin-top: 0;
 	margin-right: auto;
 	margin-bottom: 0;
@@ -255,7 +255,7 @@ ul{
 .midarea {
 	margin: 0px;
 	float: left;
-	height: 520px;
+
 	padding-top: 0px;
 	padding-right: 0px;
 	padding-bottom: 0px;

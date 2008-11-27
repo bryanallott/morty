@@ -1,6 +1,6 @@
 class Advance < ActiveRecord::Base
   belongs_to :loan
-  has_many :savings
+  has_one :saving
     
   def after_create
     return true if(!self.loan)
@@ -12,7 +12,7 @@ class Advance < ActiveRecord::Base
     
     hydrated_loan = Loan.find(self.loan.id)
 
-    saving.periods = (self.loan.compounding_periods - hydrated_loan.schedules.length)
+    saving.periods = (self.loan.schedules.length - hydrated_loan.schedules.length)
     saving.saving = (self.loan.total_interest - hydrated_loan.total_interest)
     saving.save!
   end

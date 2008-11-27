@@ -1,34 +1,34 @@
 <h1>Your Loan</h1>
 
-<%= link_to 'View Schedule', loan_schedule_path(@loan, nil) %> | <%= link_to 'Make An Advance Payment', new_loan_advance_path(@loan) %>
+<%= link_to 'View Schedule', loan_schedule_path(@loan, nil) %> | <%= link_to 'Make An Advance Payment', new_loan_advance_path(@loan) %> | <%= link_to 'View Current Advances', loan_advances_path(@loan) %>
 <br/>&nbsp;<br/>
 
 <p>
-  <b>Start:</b>
+  <b class="tag">Start:</b>
   <%=h @loan.start %>
 </p>
 
 <p>
-  <b>Principal:</b>
-  <%=h @loan.principal %>
+  <b class="tag">Principal:</b>
+  <%=h sprintf("%0.2f", @loan.principal) %>
 </p>
 
 <p>
-  <b>Interest:</b>
+  <b class="tag">Interest:</b>
   <%=h @loan.annual_interest %>
 </p>
 
 <p>
-  <b>Period:</b>
+  <b class="tag">Period:</b>
   <%=h @loan.compounding_periods %>
 </p>
 <p>
-  <b>Repayment:</b>
-  <%=h "R#{@loan.repayment}" %>
+  <b class="tag">Repayment:</b>
+  <%=h sprintf("%0.2f", @loan.repayment) %>
 </p>
 <p>
-  <b>Total Paid:</b>
-  <%=h "R#{@loan.total_payments}" %>
+  <b class="tag">Total Paid:</b>
+  <%=h sprintf("%0.2f", @loan.total_payments) %>
 </p>
 
 <br/>&nbsp;<br/>

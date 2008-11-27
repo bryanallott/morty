@@ -1,4 +1,4 @@
-<h1>New advance</h1>
+<h1>Create an advance payment</h1>
 
 <% form_for :advance, :url => {:action => 'create'} do |f| %>
   <%= f.error_messages %>
@@ -15,5 +15,5 @@
     <%= f.submit "Create" %>
   </p>
 <% end %>
-
-<%= link_to 'Back', loan_advances_path(@loan) %>
+<br/>&nbsp<br/>
+<%= link_to 'Cancel', loan_advances_path(@loan) %>
