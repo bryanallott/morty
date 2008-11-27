@@ -1,4 +1,4 @@
-<h1>New loan</h1>
+<h1>Your New Loan</h1>
 
 <% form_for(@loan) do |f| %>
   <%= f.error_messages %>
@@ -12,16 +12,16 @@
     <%= f.text_field :principal %>
   </p>
   <p>
-    <%= f.label :annual_interest %><br />
+    Annual Interest Rate (ex. 12.0 = 12%)<br />
     <%= f.text_field :annual_interest %>
   </p>
   <p>
-    <%= f.label :compounding_periods %><br />
+    Compounding Periods (ex. 240 = 20 years x 12)<br />
     <%= f.text_field :compounding_periods %>
   </p>
   <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
-
-<%= link_to 'Back', loans_path %>
+<br/>&nbsp;<br/>
+<%= link_to 'Cancel', loans_path %>

@@ -1,19 +1,54 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Morty: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Morty</title>
+  <%= stylesheet_link_tag 'style', 'scaffold' %>
   <%= javascript_include_tag "prototype", "flotr" %>
-
 </head>
+
 <body>
-
-<p style="color: green"><%= flash[:notice] %></p>
-
-<%= yield  %>
+ <div id="topheader">
+   <div class="logo"></div>
+    <div class="menu_area">
+    <a href="#" class="ideas">learn<span class="menu_text"></span></a>
+    <a href="#" class="links">grow<span class="menu_text"></span></a>
+    <a href="#" class="info">help<span class="menu_text"></span></a>
+    <a href="#" class="works">more<span class="menu_text"></span></a>
+    </div>
+ </div>
+<div id="body_area">
+  <div class="midarea">
+    <div class="head">An Amortized Experience</div>
+    <div class="body_textarea">
+      <div align="justify">understanding and experimenting with loans</div>
+    </div>
+    <div class="body_textarea">
+      <div align="justify">
+        <p style="color: green"><%= flash[:notice] %></p>
+        <%= yield  %>
+      </div>
+    </div>
+    <div class="innerbanner"><span class="innerbanner_head">Note: Loan data will be periodically purged. So feel free to experiment and create as many loan scenarios as you like.</span><br />
+      <span class="innerbanner_head">Just remember to print/save what you want to use later.</span></div>
+  </div>
+</div>
+<div id="fotter">
+  <div class="fotter_links">
+    <div align="center">
+      <a href="/" class="fotterlink">Home</a>  |  <a href="http://bryanallott.net/" class="fotterlink">About Us</a></div>
+  </div>
+  <div class="fotter_copyrights">
+    <div align="center">&copy; 2008 bryanallott.net. All Rights Reserved</div>
+  </div>
+  <div class="fotter_validation">
+    <div align="center"><a href="http://validator.w3.org/check?uri=referer" target="_blank" class="xhtml">XHTML</a> <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank" class="css">CSS</a><br />
+    </div>
+  </div>
+  <div class="fotter_designed">
+    <div align="center">Designed By : <a href="#" class="fotter_designedlink">Template World</a></div>
+  </div>
+</div>
 
 </body>
 </html>

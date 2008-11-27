@@ -12,6 +12,18 @@ pre {
   font-size: 11px;
 }
 
+#container, #container_2, #container_3 {
+  display: none;
+  float: left;
+  width:460px;
+  height:400px;
+  max-height:500px;
+}
+
+#container_3 {
+  overflow:auto;
+}
+
 a { color: #000; }
 a:visited { color: #666; }
 a:hover { color: #fff; background-color:#000; }

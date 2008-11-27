@@ -1,9 +1,70 @@
-<h1>Listing schedule for Loan</h1>
+<h1>Amortization Schedule</h1>
 
-<div id="container" style="width:460px;height:400px"></div>
-<div id="container_2" style="width:460px;height:400px"></div>
+<p>
+  For loan of <%=h @loan.principal %> at <%=h @loan.annual_interest %>% interest starting on '<%=h @loan.start %>'.<br/>
+  Loan is over a period of <%=h @loan.compounding_periods %> with monthly repayments set at <%=h sprintf("%0.2f", @loan.repayment) %>.
+  <br/>&nbsp;</br/>
+</p>
+
+<%= link_to 'Go Back To Loan', loan_path(@loan) %>
+<a href="#" onclick="return show_capital();">Capital Curves</a> | <a href="#" onclick="return show_interest();">Interest Curve</a> | <a href="#" onclick="return show_schedule();">Schedule</a>
+<br/>&nbsp;<br/>
+  
+<div id="container"></div>
+<div id="container_2"></div>
+
+<div id="container_3">
+<table>
+  <tr>
+    <th>Period</th>
+    <th>Remaining Capital</th>
+    <th>Repayment</th>
+    <th>Interest paid</th>
+    <th>Capital paid</th>
+    <th>Equity</th>
+  </tr>
+
+<% 	capital_sum = 0
+	for schedule in @schedules 
+%>
+
+  <tr>
+    <td><%=h schedule.period %></td>
+    <td align="right"><%=h sprintf("%0.2f", schedule.existing_capital) %></td>
+    <td align="right"><%=h sprintf("%0.2f", schedule.repayment) %></td>
+    <td align="right"><%=h sprintf("%0.2f", schedule.interest_paid) %></td>
+    <td align="right"><%=h sprintf("%0.2f", schedule.capital_paid) %></td>
+      <% capital_sum += schedule.capital_paid %>
+    <td align="right"><%=h sprintf("%0.2f", capital_sum) %></td>
+  </tr>
+<% end %>
+</table>
+</div>
 
   <script type="text/javascript">
+  <!--
+  
+  function show_capital() {  
+    $('container').style.display = 'block';
+    $('container_2').style.display = 'none';
+    $('container_3').style.display = 'none';
+    return false;
+  }
+  
+  function show_interest() {
+    $('container').style.display = 'none';
+    $('container_2').style.display = 'block';
+    $('container_3').style.display = 'none';
+    return false;
+  }
+  
+  function show_schedule() {
+    $('container').style.display = 'none';
+    $('container_2').style.display = 'none';
+    $('container_3').style.display = 'block';
+    return false;
+  }
+  
   var f = Flotr.draw( $('container'),[
             { 
               data: [<%= plot_existing_capital(@loan) %>],
@@ -30,33 +91,8 @@
               yaxis: {min:0}
             }
             );
-  </script>
 
-<table>
-  <tr>
-    <th>Period</th>
-    <th>Remaining Capital</th>
-    <th>Repayment</th>
-    <th>Interest paid</th>
-    <th>Capital paid</th>
-    <th>Equity</th>
-  </tr>
-
-<% 	capital_sum = 0
-	for schedule in @schedules 
-%>
-
-  <tr>
-    <td><%=h schedule.period %></td>
-    <td align="right"><%=h sprintf("%0.2f", schedule.existing_capital) %></td>
-    <td align="right"><%=h sprintf("%0.2f", schedule.repayment) %></td>
-    <td align="right"><%=h sprintf("%0.2f", schedule.interest_paid) %></td>
-    <td align="right"><%=h sprintf("%0.2f", schedule.capital_paid) %></td>
-      <% capital_sum += schedule.capital_paid %>
-    <td align="right"><%=h sprintf("%0.2f", capital_sum) %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+      $('container').style.display = 'block';
+  -->
+</script>
 

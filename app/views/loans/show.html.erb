@@ -1,6 +1,8 @@
-<%= link_to 'Schedule', loan_schedule_path(@loan, nil) %>
-<%= link_to 'Make An Advance Payment', new_loan_advance_path(@loan) %>
-<br/>
+<h1>Your Loan</h1>
+
+<%= link_to 'View Schedule', loan_schedule_path(@loan, nil) %> | <%= link_to 'Make An Advance Payment', new_loan_advance_path(@loan) %>
+<br/>&nbsp;<br/>
+
 <p>
   <b>Start:</b>
   <%=h @loan.start %>
@@ -29,6 +31,5 @@
   <%=h "R#{@loan.total_payments}" %>
 </p>
 
-
-<%= link_to 'Edit', edit_loan_path(@loan) %> |
-<%= link_to 'Back', loans_path %>
+<br/>&nbsp;<br/>
+<%= link_to 'Edit Loan', edit_loan_path(@loan) %> | <%= link_to 'View All Loans', loans_path %>
