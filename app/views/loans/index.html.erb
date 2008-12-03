@@ -16,7 +16,7 @@
 <% for loan in @loans %>
   <tr>
     <td><%=h loan.start %></td>
-    <td><%=h sprintf("%0.2f", loan.principal) %></td>
+    <td><%= link_to sprintf("%0.2f", loan.principal), loan_path(loan) %></td>
     <td><%=h sprintf("%0.2f", loan.annual_interest) %></td>
     <td><%=h loan.compounding_periods %></td>
     <td><%=h sprintf("%0.2f", loan.repayment) %></td>

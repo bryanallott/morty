@@ -16,7 +16,7 @@
     <td><%=h sprintf("%0.2f", advance.amount) %></td>
     <td><%=h advance.saving.periods %></td>
     <td><%=h sprintf("%0.2f", advance.saving.saving) %></td>
-    <td><%= link_to 'Delete', loan_advance_path(@loan, @advance), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Delete', loan_advance_path(@loan, advance), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

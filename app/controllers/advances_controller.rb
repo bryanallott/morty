@@ -76,12 +76,12 @@ class AdvancesController < ApplicationController
 
   def destroy
     @advance = Advance.find(params[:id])
-    @advance.saving.destroy!
-    @advance.destroy!
+    @advance.saving.destroy
+    @advance.destroy
     @loan.save!
     
     respond_to do |format|
-      format.html { redirect_to() }
+      format.html { redirect_to([@loan]) }
       format.xml  { head :ok }
     end
   end
