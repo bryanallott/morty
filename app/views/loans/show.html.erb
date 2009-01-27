@@ -1,6 +1,8 @@
 <h1>Your Loan</h1>
 
-<%= link_to 'View Schedule', loan_schedule_path(@loan, nil) %> | <%= link_to 'Make An Advance Payment', new_loan_advance_path(@loan) %> | <%= link_to 'View Current Advances', loan_advances_path(@loan) %>
+<%= link_to 'View Schedule', loan_schedules_path(@loan) %> | 
+<%= link_to 'Make An Advance Payment', new_loan_advance_path(@loan) %> | 
+<%= link_to 'View Current Advances', loan_advances_path(@loan) %>
 <br/>&nbsp;<br/>
 
 <p>

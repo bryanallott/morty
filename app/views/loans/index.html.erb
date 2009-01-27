@@ -23,7 +23,7 @@
     <td><%=h sprintf("%0.2f", (loan.compounding_periods * loan.repayment)) %></td>
     <td><%=h sprintf("%0.2f", (loan.compounding_periods * loan.repayment) - loan.principal) %></td>
     <td><%=h sprintf("%0.2f", loan.future_value) %></td>
-    <td><%= link_to 'Schedule', loan_schedule_path(loan, nil) %><br/>
+    <td><%= link_to 'Schedule', loan_schedules_path(loan) %><br/>
         <%= link_to 'Edit', edit_loan_path(loan) %><br/>
     </td>
   </tr>

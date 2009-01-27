@@ -3,18 +3,48 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Morty</title>
-  <%= stylesheet_link_tag 'style', 'scaffold' %>
-  <%= javascript_include_tag "prototype", "flotr" %>
+  <%= stylesheet_link_tag 'style', 'highslide' %>
+  <%= javascript_include_tag "prototype", "flotr", "highslide" %>
+
+<script type="text/javascript">
+    // override Highslide settings here
+    // instead of editing the highslide.js file
+    hs.graphicsDir = '/images/graphics/';
+	hs.outlineType = 'rounded-white';
+	hs.fadeInOut = true;
+	hs.align = 'center';
+	hs.dimmingOpacity = 0.75;
+</script>
 </head>
 
 <body>
  <div id="topheader">
    <div class="logo"></div>
     <div class="menu_area">
-    <a href="#" class="ideas">learn<span class="menu_text"></span></a>
-    <a href="#" class="links">grow<span class="menu_text"></span></a>
-    <a href="#" class="info">help<span class="menu_text"></span></a>
-    <a href="#" class="works">more<span class="menu_text"></span></a>
+	<a href="/content.htm#learn" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html-ajax',
+				wrapperClassName: 'highslide-white',
+				outlineWhileAnimating: true, objectType: 'ajax' } )"
+				class="ideas">
+			learn<span class="menu_text"></span>
+		</a>
+	<a href="/content.htm#grow" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html-ajax',
+				wrapperClassName: 'highslide-white',
+				outlineWhileAnimating: true, objectType: 'ajax' } )"
+				class="links">
+			grow<span class="menu_text"></span>
+		</a>
+	<a href="/content.htm#help" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html-ajax',
+				wrapperClassName: 'highslide-white',
+				outlineWhileAnimating: true, objectType: 'ajax' } )"
+				class="info">
+			help<span class="menu_text"></span>
+		</a>
+	<a href="/content.htm#grow" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html-ajax',
+				wrapperClassName: 'highslide-white',
+				outlineWhileAnimating: true, objectType: 'ajax' } )"
+				class="works">
+			more<span class="menu_text"></span>
+		</a>
     </div>
  </div>
 <div id="body_area">
@@ -50,6 +80,21 @@
   </div>
 </div>
 
+<div class="highslide-html-content" id="highslide-html-ajax" style="padding: 15px; width: 300px;">
+	<div class="highslide-header">
+		<a href="#" onclick="return false" class="highslide-move">Move</a>&nbsp;
+		<a href="#" onclick="return hs.close(this)" class="highslide-close">Close</a>
+	</div>
+	<div class="highslide-body" style="padding: 0 10px 10px 10px"></div>
+	<div class="highslide-footer">
+		<div>
+		    <span class="highslide-resize" title="Resize">
+				<span></span>
+			</span>
+	    </div>
+	</div>
+</div>
+	
 <script type="text/javascript">
 <!--
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -60,6 +105,7 @@ var pageTracker = _gat._getTracker("UA-2377922-2");
 pageTracker._trackPageview();
 -->
 </script>
+
 
 </body>
 </html>
