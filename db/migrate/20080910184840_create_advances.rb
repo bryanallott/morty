@@ -2,7 +2,7 @@ class CreateAdvances < ActiveRecord::Migration
   def self.up
     create_table :advances do |t|
       t.integer :loan_id
-      t.date :when
+      t.date :dop
       t.float :amount
 
       t.timestamps

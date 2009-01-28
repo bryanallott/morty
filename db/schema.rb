@@ -13,7 +13,7 @@ ActiveRecord::Schema.define(:version => 20081126130527) do
 
   create_table "advances", :force => true do |t|
     t.integer  "loan_id"
-    t.date     "when"
+    t.date     "dop"
     t.float    "amount"
     t.datetime "created_at"
     t.datetime "updated_at"

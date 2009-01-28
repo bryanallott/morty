@@ -12,7 +12,7 @@
 
 <% for advance in @advances %>
   <tr>
-    <td><%=h advance.when %></td>
+    <td><%=h advance.dop %></td>
     <td><%=h sprintf("%0.2f", advance.amount) %></td>
     <td><%=h advance.saving.periods %></td>
     <td><%=h sprintf("%0.2f", advance.saving.saving) %></td>

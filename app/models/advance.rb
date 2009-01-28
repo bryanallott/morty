@@ -1,19 +1,25 @@
 class Advance < ActiveRecord::Base
   belongs_to :loan
   has_one :saving
+  after_save :create_saving
+  
+private
+  def create_saving()
+    #create the saving
+    return true if(self.loan.nil?)
+
+    #what are the current figures?
+    interest = self.loan.total_interest
+    schedules = self.loan.schedules.length
     
-  def after_create
-    return true if(!self.loan)
+    #this effects a recalculation of the schedules
+    #with this advance incorporated
+    self.loan.save!
+    self.loan.reload
 
     saving = Saving.new(:advance => self)
-    interest = self.loan.total_interest
-        
-    self.loan.save!
-    
-    hydrated_loan = Loan.find(self.loan.id)
-
-    saving.periods = (self.loan.schedules.length - hydrated_loan.schedules.length)
-    saving.saving = (self.loan.total_interest - hydrated_loan.total_interest)
+    saving.periods = (schedules - self.loan.schedules.length)
+    saving.saving = (interest - self.loan.total_interest)
     saving.save!
   end
 end

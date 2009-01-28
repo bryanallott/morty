@@ -1,9 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  when: 2008-09-10
+  dop: 2008-09-10
   amount: 15000
 
 two:
-  when: 2009-09-10
+  dop: 2009-09-10
   amount: 10000

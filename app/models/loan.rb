@@ -55,7 +55,7 @@ private
       from = Date.new(start_date.year, start_date.month, 1) >> month
       to = Date.new(from.year, from.month, -1)
       
-      advances = self.advances.find(:all, :conditions => ["[when] between :from and :to", { :from => from, :to => to }])
+      advances = self.advances.find(:all, :conditions => ["dop between :from and :to", { :from => from, :to => to }])
       advances.each { |a|
         existing_capital -= a.amount 
         capital_paid += a.amount
