@@ -10,10 +10,10 @@
 <a href="#" onclick="return show_capital();">Capital Curves</a> | <a href="#" onclick="return show_interest();">Interest Curve</a> | <a href="#" onclick="return show_schedule();">Schedule</a>
 <br/>&nbsp;<br/>
   
-<div id="container"></div>
-<div id="container_2"></div>
+<div id="capital_curve"></div>
+<div id="interest_curve"></div>
 
-<div id="container_3">
+<div id="schedule_table">
 <table>
   <tr>
     <th>Period</th>
@@ -45,27 +45,27 @@
   <!--
   
   function show_capital() {  
-    $('container').style.display = 'block';
-    $('container_2').style.display = 'none';
-    $('container_3').style.display = 'none';
+    $('capital_curve').style.display = 'block';
+    $('interest_curve').style.display = 'none';
+    $('schedule_table').style.display = 'none';
     return false;
   }
   
   function show_interest() {
-    $('container').style.display = 'none';
-    $('container_2').style.display = 'block';
-    $('container_3').style.display = 'none';
+    $('capital_curve').style.display = 'none';
+    $('interest_curve').style.display = 'block';
+    $('schedule_table').style.display = 'none';
     return false;
   }
   
   function show_schedule() {
-    $('container').style.display = 'none';
-    $('container_2').style.display = 'none';
-    $('container_3').style.display = 'block';
+    $('capital_curve').style.display = 'none';
+    $('interest_curve').style.display = 'none';
+    $('schedule_table').style.display = 'block';
     return false;
   }
   
-  var f = Flotr.draw( $('container'),[
+  var f = Flotr.draw( $('capital_curve'),[
             { 
               data: [<%= plot_existing_capital(@loan) %>],
               label: "capital debt"
@@ -78,7 +78,7 @@
               yaxis: {min:0}
             }
             );
-  var f = Flotr.draw( $('container_2'),[
+  var f = Flotr.draw( $('interest_curve'),[
 			{
 			  data: [<%= plot_interest_paid(@loan) %>],
 			  label: "interest paid"
@@ -92,7 +92,7 @@
             }
             );
 
-      $('container').style.display = 'block';
+      show_capital();
   -->
 </script>
 

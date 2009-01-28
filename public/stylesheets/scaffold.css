@@ -14,14 +14,14 @@ pre {
 
 .tag {display:block; width:120px;float:left;}
 
-#container, #container_2, #container_3 {
+#capital_curve, #interest_curve, #schedule_table {
   display: none;
   float: left;
   width:460px;
   height:400px;
 }
 
-#container_3 {
+#schedule_table {
   overflow:auto;
   width:600px !important;
 }
